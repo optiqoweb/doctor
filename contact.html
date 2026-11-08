@@ -192,6 +192,10 @@ html[data-theme=dark] .err{color:#ff9a90}
 @media(max-width:760px){.f .row{grid-template-columns:1fr}.fcard{padding:22px 18px}}
 footer .copy .ob{color:#fff;font-weight:600;text-decoration:underline;text-underline-offset:3px}
 footer .copy .ob:hover{text-decoration-thickness:2px}
+footer .copy .credit{background:#fff;color:#1b1b1b;padding:9px 18px;border-radius:999px;font-size:.95rem;box-shadow:0 4px 14px rgba(0,0,0,.25)}
+footer .copy .credit .ob{color:#0b0b0b;font-weight:700;text-decoration:underline;text-underline-offset:3px}
+footer .copy .credit .ob::after{content:" \2197";text-decoration:none;display:inline-block}
+footer .copy .credit .ob:hover{color:#000;text-decoration-thickness:2px}
 </style>
 </head>
 <body data-page="contact">
@@ -223,7 +227,7 @@ footer .copy .ob:hover{text-decoration-thickness:2px}
 <div class="fl"><h4>পেজসমূহ</h4><a href="index.html">হোম</a><a href="about.html">পরিচিতি</a><a href="treatments.html">চিকিৎসাসমূহ</a><a href="contact.html">চেম্বার</a></div>
 <div><h4>যোগাযোগ</h4><p>এ সামাদ মেমোরিয়াল হাসপাতাল, খুলনা</p><p><a href="tel:+8801763818283">01763-818283</a></p></div>
 </div>
-<div class="wrap copy"><span>© 2026 ডাঃ মোঃ আল আমিন</span><span>Designed &amp; Maintained by <a class="ob" href="https://optiqoweb.github.io/optiqoweb/" target="_blank" rel="noopener">Optiqo Web</a></span></div></footer>
+<div class="wrap copy"><span>© 2026 ডাঃ মোঃ আল আমিন</span><span class="credit">Designed &amp; Maintained by <a class="ob" href="https://optiqoweb.github.io/optiqoweb/" target="_blank" rel="noopener">Optiqo Web</a></span></div></footer>
 <button class="totop" id="totop" type="button" aria-label="Back to top"><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path d="M12 19V6M6 11l6-6 6 6" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
 <script>
 var di=document.getElementById('doc');function fb(){di.onerror=null;di.src=di.dataset.fb}
