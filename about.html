@@ -196,6 +196,46 @@ footer .copy .credit{background:#fff;color:#1b1b1b;padding:9px 18px;border-radiu
 footer .copy .credit .ob{color:#0b0b0b;font-weight:700;text-decoration:underline;text-underline-offset:3px}
 footer .copy .credit .ob::after{content:" \2197";text-decoration:none;display:inline-block}
 footer .copy .credit .ob:hover{color:#000;text-decoration-thickness:2px}
+/* ---- subtle background animation ---- */
+@keyframes bgfloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-14px)}}
+@keyframes bgdrift{0%{transform:translate(0,0) scale(1)}100%{transform:translate(-36px,26px) scale(1.12)}}
+@keyframes bgspin{to{transform:rotate(360deg)}}
+@keyframes bgpulse{0%{box-shadow:0 0 0 0 color-mix(in srgb,var(--brand) 45%,transparent)}70%,100%{box-shadow:0 0 0 14px transparent}}
+@keyframes bgshine{0%{background-position:0% 50%}100%{background-position:100% 50%}}
+.hero,section.alt,.page-hero{position:relative;overflow:hidden}
+.hero .wrap,section.alt>.wrap,.page-hero .wrap{position:relative;z-index:1}
+.hero::before,.hero::after,section.alt::before{content:"";position:absolute;border-radius:50%;pointer-events:none;z-index:0}
+.hero::before{width:420px;height:420px;left:-120px;top:-140px;background:radial-gradient(circle,color-mix(in srgb,var(--brand) 20%,transparent) 0,transparent 70%);animation:bgdrift 13s ease-in-out infinite alternate}
+.hero::after{width:360px;height:360px;right:-90px;bottom:-120px;background:radial-gradient(circle,color-mix(in srgb,var(--brand) 16%,transparent) 0,transparent 70%);animation:bgdrift 17s ease-in-out infinite alternate-reverse}
+section.alt::before{width:300px;height:300px;right:-80px;top:-100px;background:radial-gradient(circle,color-mix(in srgb,var(--brand) 14%,transparent) 0,transparent 70%);animation:bgdrift 15s ease-in-out infinite alternate}
+.page-hero::after{animation:bgdrift 14s ease-in-out infinite alternate}
+.page-hero::before{content:"";position:absolute;left:-70px;bottom:-110px;width:240px;height:240px;border-radius:50%;background:rgba(255,255,255,.06);animation:bgdrift 18s ease-in-out infinite alternate-reverse}
+.portrait img{animation:bgfloat 6s ease-in-out infinite}
+.badge.l{animation:bgfloat 5s ease-in-out infinite}
+.badge.r{animation:bgfloat 5.5s ease-in-out -2s infinite}
+.portrait::after{animation:bgspin 28s linear infinite}
+.nav-cta{animation:bgpulse 2.8s ease-out infinite}
+.ctaband,.ccall{background-size:220% 220%;animation:bgshine 9s ease-in-out infinite alternate}
+.rv{opacity:0;transform:translateY(26px);transition:opacity .7s ease,transform .7s ease}
+.rv.in{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}.rv{opacity:1;transform:none}}
+/* ---- stronger background animation ---- */
+@keyframes bgdrift2{0%{transform:translate(0,0) scale(1)}50%{transform:translate(-50px,34px) scale(1.18)}100%{transform:translate(40px,-30px) scale(.96)}}
+@keyframes orb{0%{transform:translate(0,0) rotate(0) scale(1)}50%{transform:translate(22px,-34px) rotate(120deg) scale(1.18)}100%{transform:translate(-18px,26px) rotate(240deg) scale(.94)}}
+.hero{background:linear-gradient(135deg,var(--soft),var(--bg) 45%,var(--soft));background-size:300% 300%;animation:bgshine 11s ease-in-out infinite alternate}
+.hero::before{width:560px;height:560px;left:-170px;top:-190px;background:radial-gradient(circle,color-mix(in srgb,var(--brand) 38%,transparent) 0,transparent 68%);animation:bgdrift2 9s ease-in-out infinite alternate}
+.hero::after{width:500px;height:500px;right:-130px;bottom:-170px;background:radial-gradient(circle,color-mix(in srgb,var(--brand) 32%,transparent) 0,transparent 68%);animation:bgdrift2 12s ease-in-out infinite alternate-reverse}
+section.alt::before{width:420px;height:420px;right:-110px;top:-130px;background:radial-gradient(circle,color-mix(in srgb,var(--brand) 28%,transparent) 0,transparent 68%);animation:bgdrift2 10s ease-in-out infinite alternate}
+.page-hero::after{background:rgba(255,255,255,.13);animation:bgdrift2 9s ease-in-out infinite alternate}
+.page-hero::before{background:rgba(255,255,255,.1);animation:bgdrift2 12s ease-in-out infinite alternate-reverse}
+.orb{position:absolute;z-index:0;pointer-events:none;border-radius:50%;animation:orb 9s ease-in-out infinite}
+.orb.r{border:2px solid color-mix(in srgb,var(--brand) 45%,transparent)}
+.orb.d{background:color-mix(in srgb,var(--brand) 34%,transparent)}
+.page-hero .orb.r{border-color:rgba(255,255,255,.38)}
+.page-hero .orb.d{background:rgba(255,255,255,.24)}
+.portrait img{animation-duration:4.5s}
+.badge.l,.badge.r{animation-duration:3.6s}
+@media(prefers-reduced-motion:reduce){.orb{display:none}}
 </style>
 </head>
 <body data-page="about">
@@ -263,6 +303,14 @@ tt.addEventListener('click',function(){window.scrollTo({top:0,behavior:'smooth'}
 document.querySelectorAll('#links a').forEach(function(a){if(a.dataset.p===document.body.dataset.page)a.classList.add('act')});
 var hd=document.getElementById('hd');
 window.addEventListener('scroll',function(){hd.classList.toggle('sc',window.scrollY>40)},{passive:true});
+(function(){if(!('IntersectionObserver' in window)||matchMedia('(prefers-reduced-motion: reduce)').matches)return;
+var els=document.querySelectorAll('.card,.cred,.ctaband,.icard,.ccall,.fcard,.sec-h,.page-hero .wrap>*');
+var io=new IntersectionObserver(function(es){es.forEach(function(e){if(!e.isIntersecting)return;var el=e.target;io.unobserve(el);el.classList.add('in');setTimeout(function(){el.classList.remove('rv','in');el.style.transitionDelay=''},1100)})},{threshold:.1});
+els.forEach(function(el){el.classList.add('rv');el.style.transitionDelay=(Array.prototype.indexOf.call(el.parentNode.children,el)%4)*90+'ms';io.observe(el)})})();
+(function(){if(matchMedia('(prefers-reduced-motion: reduce)').matches)return;
+var S=[['r',64,'6%','16%',9],['d',16,'24%','72%',7],['r',38,'52%','10%',11],['d',22,'76%','62%',8],['r',90,'88%','14%',12],['d',12,'40%','86%',6],['r',26,'66%','82%',10]];
+document.querySelectorAll('.hero,section.alt,.page-hero').forEach(function(c){S.forEach(function(s,i){var o=document.createElement('span');o.className='orb '+s[0];o.setAttribute('aria-hidden','true');
+o.style.cssText='width:'+s[1]+'px;height:'+s[1]+'px;left:'+s[2]+';top:'+s[3]+';animation-duration:'+s[4]+'s;animation-delay:-'+(i*1.7)+'s';c.insertBefore(o,c.firstChild)})})})();
 </script>
 </body>
 </html>
