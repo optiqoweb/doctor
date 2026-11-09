@@ -256,6 +256,16 @@ body::before{background:color-mix(in srgb,var(--bg) 72%,transparent);-webkit-bac
 .emg>span:last-child{padding:0 20px 0 14px;letter-spacing:.2px}
 .emg::after{content:"";position:absolute;left:12px;right:12px;top:5px;height:9px;border-radius:999px;background:linear-gradient(rgba(255,255,255,.5),rgba(255,255,255,0));pointer-events:none}
 @keyframes emgpulse{0%{box-shadow:0 8px 20px rgba(217,45,32,.35),0 0 0 2px #fff,0 0 0 2px rgba(217,45,32,.5)}70%,100%{box-shadow:0 8px 20px rgba(217,45,32,.35),0 0 0 2px #fff,0 0 0 16px rgba(217,45,32,0)}}
+/* ---- emergency pill: ~35% smaller ---- */
+.emg{height:31px;font-size:.7rem;right:16px;box-shadow:0 5px 14px rgba(217,45,32,.35),0 0 0 1.5px #fff}
+.emg .eic{width:34px}
+.emg .si{width:13px;height:13px;stroke-width:2.4}
+.emg>span:last-child{padding:0 13px 0 9px}
+.emg::after{left:8px;right:8px;top:3px;height:6px}
+.totop{bottom:calc(60px + env(safe-area-inset-bottom,0px))}
+footer .copy{padding-bottom:60px}
+@keyframes emgpulse{0%{box-shadow:0 5px 14px rgba(217,45,32,.35),0 0 0 1.5px #fff,0 0 0 1.5px rgba(217,45,32,.5)}70%,100%{box-shadow:0 5px 14px rgba(217,45,32,.35),0 0 0 1.5px #fff,0 0 0 10px rgba(217,45,32,0)}}
+@media(max-width:760px){.emg{right:14px}.totop{bottom:calc(60px + env(safe-area-inset-bottom,0px))}}
 </style>
 </head>
 <body data-page="home">
