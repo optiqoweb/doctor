@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://optiqoweb.github.io/doctor/sitemap.xml
