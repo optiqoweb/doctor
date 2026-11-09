@@ -1,0 +1,31 @@
+# ------------------------------------------------------------
+# Clean URLs for Dr. Md. Al Amin website
+#   /about.html        ->  /about
+#   /treatments.html   ->  /treatments
+#   /contact.html      ->  /contact
+#   /appointment.html  ->  /appointment
+#   /index.html        ->  /
+#
+# Put this file in the SAME folder as index.html (the site root).
+# Works on Apache / LiteSpeed hosting (cPanel, most shared hosting).
+# ------------------------------------------------------------
+
+DirectoryIndex index.html
+Options -MultiViews
+
+<IfModule mod_rewrite.c>
+RewriteEngine On
+
+# 1) /index.html  ->  /
+RewriteCond %{THE_REQUEST} \s/+index\.html[\s?] [NC]
+RewriteRule ^ / [R=301,L]
+
+# 2) Visitor asks for /page.html  ->  redirect to /page
+RewriteCond %{THE_REQUEST} \s/+(.+?)\.html[\s?] [NC]
+RewriteRule ^ /%1 [R=301,L,NE]
+
+# 3) Serve /page from page.html behind the scenes
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME}\.html -f
+RewriteRule ^(.+?)/?$ $1.html [L]
+</IfModule>
