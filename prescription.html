@@ -2,41 +2,43 @@
 <html lang="bn">
 <head>
 <meta charset="utf-8">
+<script>try{document.documentElement.dataset.theme=localStorage.getItem('theme')||'light'}catch(e){document.documentElement.dataset.theme='light'}</script>
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="robots" content="noindex, nofollow">
 <title>Prescription Generator – Dr. Md. Al Amin</title>
 <link rel="icon" type="image/png" href="assets/favicon.png">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+Bengali:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+Bengali:wght@400;500;600;700&family=Noto+Serif+Bengali:wght@600;700&family=Fraunces:wght@600;700&family=Inter:wght@400;500;600;700&display=swap">
 <style>
-:root{--brand:#1e6fd9;--dark:#123f8c;--soft:#eaf2fd;--line:#d5e3f7;--ink:#14233b;--muted:#52637a}
+:root{--bg:#ffffff;--page:#eef3fa;--surface:#fff;--ink:#14233b;--muted:#52637a;--brand:#1e6fd9;--dark:#123f8c;--soft:#eaf2fd;--line:#d5e3f7;--on-brand:#fff;--dng:#b3261e;--dngbg:#fdecea;--tabsbg:rgba(238,243,250,.94);--glass:rgba(255,255,255,.8)}
+:root[data-theme="dark"]{--bg:#0b1627;--page:#0b1627;--surface:#122238;--ink:#e7eefb;--muted:#9fb3d1;--brand:#5aa2ff;--dark:#9cc6ff;--soft:#10213b;--line:#223a5e;--on-brand:#06142a;--dng:#ff9a93;--dngbg:#3a1a1c;--tabsbg:rgba(11,22,39,.94);--glass:rgba(18,34,56,.78);color-scheme:dark}
 *{box-sizing:border-box}
-body{margin:0;background:#eef3fa;color:var(--ink);font:15px/1.5 Inter,"Noto Sans Bengali",system-ui,sans-serif}
-.app{display:grid;grid-template-columns:minmax(330px,430px) minmax(0,1fr);gap:22px;max-width:1360px;margin:0 auto;padding:18px;align-items:start}
-.panel{background:#fff;border:1px solid var(--line);border-radius:18px;padding:0 0 18px;position:sticky;top:18px;max-height:calc(100vh - 36px);overflow:auto}
-.ptop{position:sticky;top:0;background:#fff;z-index:3;padding:16px 18px 12px;border-bottom:1px solid var(--line)}
-.ptop h1{margin:0 0 10px;font-size:1.15rem;color:var(--dark)}.ptop h1 small{display:block;font-weight:500;color:var(--muted);font-size:.8rem}
+body{margin:0;background:var(--page);color:var(--ink);font:15px/1.5 Inter,"Noto Sans Bengali",system-ui,sans-serif}
+.app{display:grid;grid-template-columns:var(--pw,430px) 10px minmax(0,1fr);gap:6px;max-width:1360px;margin:0 auto;padding:18px;align-items:start}
+.panel{background:var(--glass);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);border:1px solid var(--line);border-radius:20px;box-shadow:0 1px 2px rgba(18,63,140,.05),0 8px 24px rgba(18,63,140,.04);padding:0 0 18px;position:sticky;top:18px;max-height:calc(100vh - 36px);overflow:auto}
+.ptop{position:sticky;top:0;background:var(--glass);z-index:3;padding:16px 18px 12px;border-bottom:1px solid var(--line)}
+.ptop h1{margin:0 0 10px;font-size:1.15rem;color:var(--dark);font-family:Fraunces,"Noto Serif Bengali",Georgia,serif;letter-spacing:-.01em}.ptop h1 small{display:block;font-weight:500;color:var(--muted);font-size:.8rem}
 .btns{display:flex;gap:8px;flex-wrap:wrap}
-.b{border:0;border-radius:999px;padding:9px 16px;font:600 .88rem Inter,sans-serif;cursor:pointer;background:var(--brand);color:#fff}
-.b.g{background:var(--soft);color:var(--dark)}.b.r{background:#fdecea;color:#b3261e}
+.b{border:0;border-radius:999px;padding:9px 16px;font:600 .88rem Inter,sans-serif;cursor:pointer;background:var(--brand);color:var(--on-brand)}
+.b.g{background:var(--soft);color:var(--dark)}.b.r{background:var(--dngbg);color:var(--dng)}
 .b:hover{filter:brightness(.95)}
 fieldset{border:0;margin:0;padding:14px 18px 0}
 legend{font-weight:700;color:var(--dark);font-size:.9rem;padding:0;margin-bottom:8px}
 .g2{display:grid;grid-template-columns:1fr 1fr;gap:8px}.g3{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}.g4{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
 label{display:block;font-size:.76rem;color:var(--muted);margin:0 0 3px;font-weight:500}
-input,select,textarea{width:100%;border:1px solid var(--line);border-radius:10px;padding:8px 10px;font:inherit;background:#fff;color:var(--ink);min-width:0}
+input,select,textarea{width:100%;border:1px solid var(--line);border-radius:10px;padding:8px 10px;font:inherit;background:var(--surface);color:var(--ink);min-width:0}
 input:focus,select:focus,textarea:focus{outline:2px solid var(--brand);outline-offset:0;border-color:var(--brand)}
 textarea{resize:vertical;min-height:60px}
-.med{border:1px solid var(--line);border-radius:12px;padding:8px;margin-bottom:8px;background:#fbfdff}
+.med{border:1px solid var(--line);border-radius:12px;padding:8px;margin-bottom:8px;background:var(--bg)}
 .mrow{display:flex;gap:6px;margin-bottom:6px}.mrow3{display:grid;grid-template-columns:.8fr 1.2fr .9fr;gap:6px;margin-bottom:6px}
-.mrow button{flex:none;width:34px;border:1px solid var(--line);background:#fff;border-radius:8px;cursor:pointer;color:var(--muted)}
-.mrow .x{color:#b3261e}
+.mrow button{flex:none;width:34px;border:1px solid var(--line);background:var(--surface);border-radius:8px;cursor:pointer;color:var(--muted)}
+.mrow .x{color:var(--dng)}
 .note{font-size:.76rem;color:var(--muted);margin:10px 18px 0}
 .recent{padding:12px 18px 0}.rc{display:flex;gap:6px;align-items:center;border-bottom:1px solid var(--line);padding:6px 0;font-size:.85rem}
 .rc span{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-.rc button{border:0;background:var(--soft);color:var(--dark);border-radius:8px;padding:4px 10px;cursor:pointer;font-weight:600;font-size:.78rem}.rc .d{background:#fdecea;color:#b3261e}
+.rc button{border:0;background:var(--soft);color:var(--dark);border-radius:8px;padding:4px 10px;cursor:pointer;font-weight:600;font-size:.78rem}.rc .d{background:var(--dngbg);color:var(--dng)}
 .sheet-wrap{width:100%}
 .sheet{width:794px;transform-origin:top left}
-.rx{background:#fff;width:794px;min-height:1123px;padding:34px 38px 26px;box-shadow:0 10px 40px rgba(18,63,140,.15);display:flex;flex-direction:column;color:#111}
+.rx{--brand:#1e6fd9;--dark:#123f8c;background:#fff;width:794px;min-height:1123px;padding:34px 38px 26px;box-shadow:0 10px 40px rgba(18,63,140,.15);display:flex;flex-direction:column;color:#111}
 .hd{display:flex;justify-content:space-between;gap:20px;border-bottom:3px solid var(--brand);padding-bottom:12px}
 .hd .l,.hd .r2{flex:1}.hd .r2{text-align:right;font-size:12px;line-height:1.5;color:#333}
 .hd h2{margin:0;font-size:26px;color:var(--dark);line-height:1.2}.hd .en{font:700 15px Inter,sans-serif;color:var(--brand);margin:2px 0 4px}
@@ -54,22 +56,25 @@ textarea{resize:vertical;min-height:60px}
 .ft{margin-top:14px;display:flex;justify-content:space-between;align-items:flex-end;border-top:1px solid #999;padding-top:10px;font-size:11.5px;color:#333}
 .sig{width:210px;text-align:center;border-top:1px solid #333;padding-top:4px;font-size:12px}
 body:not(.in) .app{display:none}body.in .lg{display:none}
-.lg{min-height:100vh;display:grid;place-items:center;padding:20px}
-.lgc{width:100%;max-width:380px;background:#fff;border:1px solid var(--line);border-radius:22px;padding:30px 26px;box-shadow:0 14px 44px rgba(18,63,140,.14)}
+.lg{min-height:calc(100vh - 40px);display:grid;place-items:center;padding:20px}
+.lgc{width:100%;max-width:380px;background:var(--surface);border:1px solid var(--line);border-radius:22px;padding:30px 26px;box-shadow:0 14px 44px rgba(18,63,140,.14)}
 .lgc img{width:52px;height:52px;border-radius:14px;display:block;margin:0 auto 12px}
 .lgc h1{margin:0;text-align:center;font-size:1.25rem;color:var(--dark)}.lgc .sub{text-align:center;color:var(--muted);font-size:.85rem;margin:2px 0 18px}
 .lgc label{margin-top:10px}.lgc .pw{position:relative}.lgc .pw button{position:absolute;right:6px;top:4px;border:0;background:none;color:var(--brand);font-weight:600;cursor:pointer;padding:6px 8px;font-size:.8rem}
 .lgc .b{width:100%;margin-top:16px;padding:11px}.lgc .ck{margin-top:12px}
-.lerr{color:#b3261e;font-size:.85rem;font-weight:600;min-height:1.2em;margin:10px 0 0;text-align:center}
+.lerr{color:var(--dng);font-size:.85rem;font-weight:600;min-height:1.2em;margin:10px 0 0;text-align:center}
 .lgn{font-size:.74rem;color:var(--muted);text-align:center;margin:14px 0 0}
-.chips{display:flex;flex-wrap:wrap;gap:5px;margin-top:6px}.chip{border:1px solid var(--line);background:#fff;border-radius:999px;padding:3px 10px;font-size:.76rem;cursor:pointer;color:var(--dark);font-family:inherit}.chip:hover{background:var(--soft)}
+.chips{display:flex;flex-wrap:wrap;gap:5px;margin-top:6px}.chip{border:1px solid var(--line);background:var(--surface);border-radius:999px;padding:3px 10px;font-size:.76rem;cursor:pointer;color:var(--dark);font-family:inherit}.chip:hover{background:var(--soft)}
+.chip.on{background:var(--brand);border-color:var(--brand);color:var(--on-brand)}.dch{margin:0 0 6px}
+input.bad{border-color:var(--dng);background:var(--dngbg);color:var(--dng);font-weight:700}input.bad:focus{outline-color:var(--dng)}label.bad{color:var(--dng);font-weight:700}
 .trow{display:flex;gap:6px}.trow select{flex:1}.trow .b{padding:8px 12px}
 details.set{padding:14px 18px 0}details.set summary{cursor:pointer;font-weight:700;color:var(--dark);font-size:.9rem}details.set .in{padding-top:10px;display:grid;gap:8px}
 .ck{display:flex;gap:8px;align-items:flex-start;font-size:.85rem;color:var(--ink)}.ck input{width:auto;margin-top:3px}
 .sigw{width:210px}.sigw img{display:block;margin:0 auto -6px;max-height:50px;max-width:200px}
 .rx.lh .hd,.rx.lh .fl2{opacity:.22}
-@media(max-width:980px){.app{grid-template-columns:minmax(0,1fr)}.sheet-wrap{min-width:0;overflow:hidden}.panel{position:static;max-height:none}}
+@media(max-width:980px){.split{display:none}.app{grid-template-columns:minmax(0,1fr);gap:22px}.sheet-wrap{min-width:0;overflow:hidden}.panel{position:static;max-height:none}}
 @media print{
+html{color-scheme:light}html,body{background:#fff!important}
 .lg{display:none!important}
 @page{size:A4;margin:8mm}
 body{background:#fff}.panel,.no-print{display:none!important}.app{display:block;padding:0;max-width:none}
@@ -77,12 +82,16 @@ body{background:#fff}.panel,.no-print{display:none!important}.app{display:block;
 .rx.lh .hd,.rx.lh .fl2{visibility:hidden}
 .rx{width:auto;min-height:279mm;box-shadow:none;padding:0;-webkit-print-color-adjust:exact;print-color-adjust:exact}
 }
+.split{align-self:stretch;cursor:col-resize;touch-action:none}
+.split i{display:block;position:sticky;top:18px;width:4px;height:calc(100vh - 36px);margin:0 auto;border-radius:4px;background:var(--line);transition:background .15s}
+.split:hover i,.split.drag i{background:var(--brand)}
+body.dragging{user-select:none;cursor:col-resize}
 .tabs{display:none}
 @media screen and (max-width:980px){
- .tabs{display:flex;position:sticky;top:0;z-index:20;gap:8px;padding:calc(8px + env(safe-area-inset-top,0px)) calc(12px + env(safe-area-inset-right,0px)) 8px calc(12px + env(safe-area-inset-left,0px));background:rgba(238,243,250,.94);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+ .tabs{display:flex;position:sticky;top:0;z-index:20;gap:8px;padding:calc(8px + env(safe-area-inset-top,0px)) calc(12px + env(safe-area-inset-right,0px)) 8px calc(12px + env(safe-area-inset-left,0px));background:var(--tabsbg);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
  body:not(.in) .tabs{display:none}
- .tabs button{flex:1;min-height:44px;border-radius:12px;background:#fff;color:var(--dark);border:1px solid var(--line);font:600 .95rem Inter,"Noto Sans Bengali",sans-serif;cursor:pointer}
- .tabs button.on{background:var(--brand);color:#fff;border-color:var(--brand)}
+ .tabs button{flex:1;min-height:44px;border-radius:12px;background:var(--surface);color:var(--dark);border:1px solid var(--line);font:600 .95rem Inter,"Noto Sans Bengali",sans-serif;cursor:pointer}
+ .tabs button.on{background:var(--brand);color:var(--on-brand);border-color:var(--brand)}
  .app{padding:12px calc(12px + env(safe-area-inset-right,0px)) calc(24px + env(safe-area-inset-bottom,0px)) calc(12px + env(safe-area-inset-left,0px))}
  .ptop{position:static}
  input:not([type=checkbox]):not([type=file]),select,textarea{font-size:16px;min-height:44px}textarea{min-height:76px}
@@ -95,9 +104,37 @@ body{background:#fff}.panel,.no-print{display:none!important}.app{display:block;
  .chip{padding:7px 12px;font-size:.82rem}.rc button{padding:9px 12px}.lgc{padding:24px 18px}
 }
 @media print{.tabs{display:none!important}.panel{display:none!important}.sheet-wrap{display:block!important}}
+
+.si{width:1em;height:1em;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;vertical-align:-.15em}
+.topstrip{background:#123f8c;color:#dce8fa;font-size:.85rem;padding-top:env(safe-area-inset-top,0px)}
+.topstrip .wrap{display:flex;align-items:center;justify-content:space-between;min-height:38px;gap:12px;max-width:1360px;margin:0 auto;padding:0 18px}
+.ts-t{display:inline-flex;align-items:center;gap:6px}
+.theme{width:36px;height:30px;border:0;border-radius:999px;background:rgba(255,255,255,.14);color:#fff;cursor:pointer;font-size:.95rem;line-height:1;display:grid;place-items:center}
+.theme:hover{background:rgba(255,255,255,.26)}
+html[data-theme=dark] .ti-d,html[data-theme=light] .ti-l{display:none}
+.b:not(.g):not(.r){box-shadow:0 8px 18px rgba(30,111,217,.25)}
+legend{font-family:Fraunces,"Noto Serif Bengali",Georgia,serif;font-size:1rem}
+.lgc h1{font-family:Fraunces,"Noto Serif Bengali",Georgia,serif;letter-spacing:-.01em}
+.lgc{border-radius:20px}
+@media(max-width:760px){.ts-t{display:none}}
+
+.bgfx{position:fixed;inset:0;z-index:-1;overflow:hidden;pointer-events:none}
+.bgfx i{position:absolute;border-radius:50%;filter:blur(70px);opacity:.3;will-change:transform}
+.bgfx i:nth-child(1){width:480px;height:480px;left:-140px;top:6%;background:#1e6fd9;animation:bgA 28s ease-in-out infinite alternate}
+.bgfx i:nth-child(2){width:540px;height:540px;right:-160px;top:36%;background:#5aa2ff;animation:bgB 34s ease-in-out infinite alternate}
+.bgfx i:nth-child(3){width:420px;height:420px;left:38%;bottom:-170px;background:#123f8c;animation:bgC 31s ease-in-out infinite alternate}
+html[data-theme=dark] .bgfx i{opacity:.2}
+@keyframes bgA{to{transform:translate(220px,160px) scale(1.2)}}
+@keyframes bgB{to{transform:translate(-240px,-130px) scale(.85)}}
+@keyframes bgC{to{transform:translate(-200px,-90px) scale(1.25)}}
+@media(max-width:760px){.bgfx i{filter:blur(48px)}}
+@media(prefers-reduced-motion:reduce){.bgfx i{animation:none}}
 </style>
 </head>
 <body>
+<div class="bgfx no-print" aria-hidden="true"><i></i><i></i><i></i></div>
+<div class="topstrip no-print"><div class="wrap"><div class="ts-l"><span class="ts-t"><svg class="si" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>দুপুর ২:৩০টা – বিকাল ৫টা · শুক্রবার বন্ধ</span></div>
+<div class="ts-r"><button class="theme" id="theme" type="button" aria-label="Light / Dark theme"><span class="ti-d"><svg class="si" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg></span><span class="ti-l"><svg class="si" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg></span></button></div></div></div>
 <div class="lg" id="login"><form class="lgc" id="lgf" autocomplete="on">
  <img src="assets/favicon.png" alt="">
  <h1>Prescription Generator</h1><div class="sub">ডাঃ মোঃ আল আমিন · Please log in / লগইন করুন</div>
@@ -113,25 +150,22 @@ body{background:#fff}.panel,.no-print{display:none!important}.app{display:block;
 
 <aside class="panel no-print">
  <div class="ptop"><h1>Prescription Generator<small>প্রেসক্রিপশন জেনারেটর</small></h1>
-  <div class="btns"><button class="b" id="print">Print / Save PDF</button><button class="b g" id="save">Save record</button><button class="b r" id="new">New</button></div>
-  <div class="btns" style="margin-top:8px"><button class="b g" id="wabtn">WhatsApp text</button><button class="b g" id="cpbtn">Copy text</button><button class="b g" id="logout">Log out</button></div>
-  <div class="btns" style="margin-top:8px"><button class="b" id="shimg">Send image</button><button class="b" id="shpdf">Send PDF</button></div>
+  <div class="btns"><button class="b" id="print">Print / Save PDF</button><button class="b" id="shpdf">Send PDF</button><button class="b" id="shimg">Send image</button></div>
+  <div class="btns" style="margin-top:8px"><button class="b g" id="wabtn">WhatsApp text</button><button class="b g" id="cpbtn">Copy text</button></div>
+  <div class="btns" style="margin-top:8px"><button class="b r" id="new">New</button><button class="b g" id="logout">Log out</button></div>
   <div class="note" id="shnote" style="margin:8px 0 0" hidden></div></div>
 
  <fieldset><legend>Patient / রোগীর তথ্য</legend>
   <div class="g2" style="margin-bottom:8px"><div><label for="pn">Name / নাম</label><input id="pn" autocomplete="off" list="dl-pt"></div><div><label for="pid">Serial / ID</label><input id="pid"></div></div>
   <div class="g4"><div><label for="pa">Age / বয়স</label><input id="pa" placeholder="45 y"></div><div><label for="ps">Sex</label><select id="ps"><option></option><option>Male</option><option>Female</option><option>Other</option></select></div><div><label for="pw">Wt (kg)</label><input id="pw" inputmode="decimal"></div><div><label for="pd">Date</label><input id="pd" type="date"></div></div>
   <div style="margin-top:8px"><label for="pp">Phone / মোবাইল</label><input id="pp" type="tel"></div>
+  <div style="margin-top:8px"><label for="pwa">WhatsApp number / হোয়াটসঅ্যাপ নম্বর <span style="font-weight:400">(not printed)</span></label><input id="pwa" type="tel" placeholder="01XXXXXXXXX"><div class="chips" id="chWa"></div></div>
  </fieldset>
 
-<fieldset><legend>Templates / টেমপ্লেট</legend>
-  <div class="trow"><select id="tpl"></select><button class="b g" id="tplload" type="button">Load</button><button class="b g" id="tplsave" type="button">Save as</button><button class="b r" id="tpldel" type="button">Del</button></div>
-  <div class="note" style="margin:6px 0 0">Saves diagnosis, tests, medicines, advice and follow-up for quick reuse.</div>
- </fieldset>
 
  <fieldset><legend>Complaints &amp; Findings / অভিযোগ ও পরীক্ষা</legend>
   <label for="cc">Chief complaints (C/C)</label><textarea id="cc"></textarea>
-  <div class="g4" style="margin-top:8px"><div><label for="bp">BP</label><input id="bp" placeholder="120/80"></div><div><label for="pulse">Pulse</label><input id="pulse" placeholder="78"></div><div><label for="temp">Temp °F</label><input id="temp"></div><div><label for="spo2">SpO₂ %</label><input id="spo2"></div></div>
+  <div class="g4" style="margin-top:8px"><div><label for="bp">BP</label><input id="bp" placeholder="120/80" inputmode="numeric" autocomplete="off" title="Type 12080 or 120 80 → 120/80"></div><div><label for="pulse">Pulse</label><input id="pulse" placeholder="78"></div><div><label for="temp">Temp °F</label><input id="temp"></div><div><label for="spo2">SpO₂ %</label><input id="spo2"></div></div>
   <div style="margin-top:8px"><label for="oe">Other findings (O/E)</label><textarea id="oe"></textarea></div>
   <div style="margin-top:8px"><label for="dx">Diagnosis / রোগ নির্ণয়</label><textarea id="dx"></textarea></div>
   <div style="margin-top:8px"><label for="inv">Investigations advised / পরীক্ষা</label><textarea id="inv"></textarea><div class="chips" id="chInv"></div></div>
@@ -144,7 +178,7 @@ body{background:#fff}.panel,.no-print{display:none!important}.app{display:block;
 
  <fieldset><legend>Advice &amp; Follow-up / উপদেশ</legend>
   <label for="adv">Advice</label><textarea id="adv"></textarea><div class="chips" id="chAdv"></div>
-  <div style="margin-top:8px"><label for="fu">Follow-up / পুনরায় দেখা</label><input id="fu" placeholder="e.g. after 7 days / ৭ দিন পর"></div>
+  <div style="margin-top:8px"><label for="fu">Follow-up / পুনরায় দেখা</label><input id="fu" placeholder="e.g. after 7 days / ৭ দিন পর"><div class="chips" id="chFu"></div><div class="note" id="fuHint" style="margin:6px 0 0"></div></div>
  </fieldset>
 
 <details class="set"><summary>Print &amp; doctor settings</summary><div class="in">
@@ -158,8 +192,8 @@ body{background:#fff}.panel,.no-print{display:none!important}.app{display:block;
  </div></details>
 
  <p class="note">Data stays only in this browser (nothing is uploaded). Use "New" and clear saved records on a shared computer. This tool only formats what the doctor enters.</p>
- <div class="recent"><legend style="font-weight:700;color:var(--dark);font-size:.9rem;margin-bottom:4px">Saved on this device</legend><div id="recent"></div><button class="b r" id="clearall" style="margin-top:8px">Delete all saved</button></div>
 </aside>
+<div class="split no-print" id="split" role="separator" aria-orientation="vertical" title="Drag to resize · double-click to reset"><i></i></div>
 
 <main class="sheet-wrap" id="wrap"><div class="sheet" id="sheet">
 <article class="rx" id="rx">
@@ -195,18 +229,21 @@ body{background:#fff}.panel,.no-print{display:none!important}.app{display:block;
 </article></div></main>
 </div>
 
-<datalist id="dl-dose"><option value="1+0+1"><option value="1+1+1"><option value="1+0+0"><option value="0+1+0"><option value="0+0+1"><option value="1+1+1+1"><option value="½+0+½"><option value="SOS"></datalist>
-<datalist id="dl-dur"><option value="3 days"><option value="5 days"><option value="7 days"><option value="10 days"><option value="14 days"><option value="1 month"><option value="Continue"></datalist>
 <datalist id="dl-med"></datalist><datalist id="dl-pt"></datalist>
 
 <script>
 (function(){
 var $=function(i){return document.getElementById(i)};
-var F=['pn','pid','pa','ps','pw','pd','pp','cc','bp','pulse','temp','spo2','oe','dx','inv','adv','fu'];
-var TIMES=[['',''],['Before meal / খাবারের আগে','খাবারের আগে'],['After meal / খাবারের পরে','খাবারের পরে'],['With meal / খাবারের সাথে','খাবারের সাথে'],['Empty stomach / খালি পেটে','খালি পেটে'],['At bedtime / ঘুমানোর আগে','ঘুমানোর আগে']];
+var F=['pn','pid','pa','ps','pw','pd','pp','pwa','cc','bp','pulse','temp','spo2','oe','dx','inv','adv','fu'];
+var TIMES=[['',''],['Before meal / খাবারের আগে','খাবারের আগে'],['30 min before meal / খাবারের ৩০ মিনিট আগে','খাবারের ৩০ মিনিট আগে'],['After meal / খাবারের পরে','খাবারের পরে'],['With meal / খাবারের সাথে','খাবারের সাথে'],['Empty stomach / খালি পেটে','খালি পেটে'],['In the morning / সকালে','সকালে'],['Morning, empty stomach / সকালে খালি পেটে','সকালে খালি পেটে'],['At noon / দুপুরে','দুপুরে'],['In the evening / বিকালে','বিকালে'],['At night / রাতে','রাতে'],['At bedtime / ঘুমানোর আগে','ঘুমানোর আগে'],['Every 8 hours / প্রতি ৮ ঘণ্টা পর পর','প্রতি ৮ ঘণ্টা পর পর'],['Every 12 hours / প্রতি ১২ ঘণ্টা পর পর','প্রতি ১২ ঘণ্টা পর পর']];
+var DOSES=[['1+0+0','1+0+0'],['0+1+0','0+1+0'],['0+0+1','0+0+1'],['1+0+1','1+0+1'],['1+1+1','1+1+1'],['1/2+0+1/2','1/2+0+1/2'],['1+1+1+1','1+1+1+1'],['SOS','SOS (প্রয়োজনে)','SOS = when needed / প্রয়োজনে']];
+var DURS=[['Duration / কতদিন',''],['1 day / ১ দিন','১ দিন'],['3 days / ৩ দিন','৩ দিন'],['5 days / ৫ দিন','৫ দিন'],['7 days / ৭ দিন','৭ দিন'],['10 days / ১০ দিন','১০ দিন'],['14 days / ১৪ দিন','১৪ দিন'],['21 days / ২১ দিন','২১ দিন'],['1 month / ১ মাস','১ মাস'],['2 months / ২ মাস','২ মাস'],['3 months / ৩ মাস','৩ মাস'],['6 months / ৬ মাস','৬ মাস'],['Continue / চালিয়ে যান','চালিয়ে যান'],['Until finished / শেষ না হওয়া পর্যন্ত','শেষ না হওয়া পর্যন্ত'],['Until next visit / পরবর্তী দেখা পর্যন্ত','পরবর্তী দেখা পর্যন্ত']];
+var FORMS=['Tab.','Cap.','Syp.','Inj.','Drops','Oint.','Cream','Inh.','Sup.','Sachet'];
+var DEFAULT_FU='after 7 days / ৭ দিন পর';
 function ls(k,v){try{if(v===undefined){var x=localStorage.getItem(k);return x?JSON.parse(x):null}localStorage.setItem(k,JSON.stringify(v))}catch(e){return null}}
 function today(){var t=new Date();return t.getFullYear()+'-'+('0'+(t.getMonth()+1)).slice(-2)+'-'+('0'+t.getDate()).slice(-2)}
 function fdate(v){if(!v)return'';var p=v.split('-');return p.length===3?p[2]+'/'+p[1]+'/'+p[0]:v}
+function mname(m){return(m.f?m.f+' ':'')+m.n}
 function el(t,c,x){var e=document.createElement(t);if(c)e.className=c;if(x!==undefined)e.textContent=x;return e}
 
 /* ---------- medicine rows ---------- */
@@ -215,43 +252,47 @@ function addMed(m){
   var n=el('input','mn');n.setAttribute('list','dl-med');n.placeholder='Medicine / ওষুধ (name + strength)';n.value=m.n||'';
   var up=el('button','u','↑'),dn=el('button','',''),x=el('button','x','×');dn.textContent='↓';up.title='Move up';dn.title='Move down';x.title='Remove';
   r1.append(n,up,dn,x);
-  var dose=el('input','md');dose.setAttribute('list','dl-dose');dose.placeholder='Dose 1+0+1';dose.value=m.d||'';
+  var dose=el('input','md');dose.placeholder='Dose 1+0+1';dose.value=m.d||'';
   var tm=el('select','mt');TIMES.forEach(function(t){var o=el('option','',t[0]);o.value=t[1];tm.appendChild(o)});tm.value=m.t||'';
-  var du=el('input','mu');du.setAttribute('list','dl-dur');du.placeholder='Duration';du.value=m.u||'';
+  var du=el('select','mu');DURS.forEach(function(t){var o=el('option','',t[0]);o.value=t[1];du.appendChild(o)});
+  if(m.u&&!DURS.some(function(t){return t[1]===m.u})){var ox=el('option','',m.u);ox.value=m.u;du.appendChild(ox)}   /* keep older saved values like '7 days' */
+  du.value=m.u||'';
   r3.append(dose,tm,du);
   var nt=el('input','mx');nt.placeholder='Note / নির্দেশ (optional)';nt.value=m.x||'';
-  d.append(r1,r3,nt);$('meds').appendChild(d);
+  var dc=el('div','chips dch');
+  DOSES.forEach(function(x){var c=el('button','chip',x[0]);c.type='button';if(x[2])c.title=x[2];c.onclick=function(){dose.value=dose.value.trim()===x[1]?'':x[1];sync();update()};dc.appendChild(c)});
+  function sync(){Array.prototype.forEach.call(dc.children,function(c,i){c.classList.toggle('on',dose.value.trim()===DOSES[i][1])})}
+  dose.addEventListener('input',sync);sync();
+  var fc=el('div','chips dch');d.dataset.f=m.f||'';
+  FORMS.forEach(function(f){var c=el('button','chip',f);c.type='button';c.onclick=function(){d.dataset.f=d.dataset.f===f?'':f;fsync();update()};fc.appendChild(c)});
+  function fsync(){Array.prototype.forEach.call(fc.children,function(c){c.classList.toggle('on',c.textContent===d.dataset.f)})}
+  fsync();
+  d.append(fc,r1,r3,dc,nt);$('meds').appendChild(d);
   x.onclick=function(){d.remove();update()};
   up.onclick=function(){if(d.previousElementSibling)d.parentNode.insertBefore(d,d.previousElementSibling);update()};
   dn.onclick=function(){if(d.nextElementSibling)d.parentNode.insertBefore(d.nextElementSibling,d);update()};
 }
-function getMeds(){return Array.prototype.map.call($('meds').children,function(d){return{n:d.querySelector('.mn').value.trim(),d:d.querySelector('.md').value.trim(),t:d.querySelector('.mt').value,u:d.querySelector('.mu').value.trim(),x:d.querySelector('.mx').value.trim()}})}
+function getMeds(){return Array.prototype.map.call($('meds').children,function(d){return{f:d.dataset.f||'',n:d.querySelector('.mn').value.trim(),d:d.querySelector('.md').value.trim(),t:d.querySelector('.mt').value,u:d.querySelector('.mu').value.trim(),x:d.querySelector('.mx').value.trim()}})}
 
 /* ---------- data ---------- */
 function getData(){var o={};F.forEach(function(k){o[k]=$(k).value});o.meds=getMeds();return o}
-function setData(o){o=o||{};F.forEach(function(k){$(k).value=o[k]||''});if(!$('pd').value)$('pd').value=today();$('meds').innerHTML='';(o.meds&&o.meds.length?o.meds:[{}]).forEach(addMed);update()}
+function setData(o){o=o||{};F.forEach(function(k){$(k).value=o[k]||''});if(!$('pd').value)$('pd').value=today();$('meds').innerHTML='';(o.meds&&o.meds.length?o.meds:[{}]).forEach(addMed);if(o.fu===undefined&&!$('fu').value)$('fu').value=ls('rx_lastfu')||DEFAULT_FU;update()}
 
 /* ---------- preview ---------- */
 function render(o){
   $('rName').textContent=o.pn;$('rAge').textContent=o.pa;$('rSex').textContent=o.ps;$('rWt').textContent=o.pw?o.pw+' kg':'';
   $('rPh').textContent=o.pp;$('rId').textContent=o.pid;$('rDate').textContent=fdate(o.pd);
-  $('rCC').textContent=o.cc;$('rDx').textContent=o.dx;$('rInv').textContent=o.inv;$('rAdv').textContent=o.adv;$('rFu').textContent=o.fu;
+  $('rCC').textContent=o.cc;$('rDx').textContent=o.dx;$('rInv').textContent=o.inv;$('rAdv').textContent=o.adv;$('rFu').textContent=fuOut(o);
   var v=[];if(o.bp)v.push('BP: '+o.bp+' mmHg');if(o.pulse)v.push('Pulse: '+o.pulse+'/min');if(o.temp)v.push('Temp: '+o.temp+' °F');if(o.spo2)v.push('SpO₂: '+o.spo2+'%');
   $('rOE').textContent=(v.join('\n')+(v.length&&o.oe?'\n':'')+o.oe);
   var ol=$('rMeds');ol.innerHTML='';
-  o.meds.forEach(function(m){if(!m.n)return;var li=el('li');li.appendChild(el('b','',m.n));
+  o.meds.forEach(function(m){if(!m.n)return;var li=el('li');li.appendChild(el('b','',mname(m)));
     var line=[m.d,m.t,m.u].filter(Boolean).join('  ·  ');if(line)li.appendChild(el('div','m',line));if(m.x)li.appendChild(el('i','',m.x));ol.appendChild(li)});
 }
 function fit(){var w=$('wrap'),s=$('sheet'),k=Math.min(1,w.clientWidth/794);s.style.transform='scale('+k+')';w.style.height=(s.offsetHeight*k)+'px'}
-var tmr;function update(){var o=getData();render(o);fit();cache={};clearTimeout(tmr);tmr=setTimeout(function(){ls('rx_draft',o)},300)}
+var tmr;function update(){var o=getData();render(o);bpCheck();fuSync();waSync();fit();cache={};clearTimeout(tmr);tmr=setTimeout(function(){ls('rx_draft',o);if(o.fu&&o.fu.trim())ls('rx_lastfu',o.fu.trim())},300)}
 
 /* ---------- records ---------- */
-function recs(){return ls('rx_records')||[]}
-function showRecs(){var r=recs(),box=$('recent');box.innerHTML='';
-  if(!r.length){box.appendChild(el('div','rc','No saved records yet'));fillPt();return}
-  r.forEach(function(x,i){var row=el('div','rc');row.appendChild(el('span','',(x.data.pn||'(no name)')+' · '+fdate(x.data.pd)+(x.data.pa?' · '+x.data.pa:'')));
-    var l=el('button','','Load'),d=el('button','d','Delete');
-    l.onclick=function(){setData(x.data)};d.onclick=function(){var a=recs();a.splice(i,1);ls('rx_records',a);showRecs()};row.append(l,d);box.appendChild(row)});fillPt()}
 function rememberMeds(o){var h=ls('rx_meds')||[];o.meds.forEach(function(m){if(m.n&&h.indexOf(m.n)<0)h.unshift(m.n)});ls('rx_meds',h.slice(0,300));fillList()}
 function fillList(){var dl=$('dl-med');dl.innerHTML='';(ls('rx_meds')||[]).forEach(function(n){var o=document.createElement('option');o.value=n;dl.appendChild(o)})}
 
@@ -260,10 +301,8 @@ document.addEventListener('input',function(e){if(e.target.closest&&e.target.clos
 document.addEventListener('change',function(e){if(e.target.closest&&e.target.closest('.panel'))update()});
 $('addmed').onclick=function(){addMed();update();var m=$('meds').lastChild;m&&m.querySelector('.mn').focus()};
 $('print').onclick=function(){rememberMeds(getData());window.print()};
-$('save').onclick=function(){var o=getData();var r=recs();r.unshift({t:Date.now(),data:o});ls('rx_records',r.slice(0,50));rememberMeds(o);showRecs();var b=$('save');b.textContent='Saved ✓';setTimeout(function(){b.textContent='Save record'},1400)};
 $('new').onclick=function(){if(confirm('Clear the form and start a new prescription?')){ls('rx_draft',null);setData({})}};
-$('clearall').onclick=function(){if(confirm('Delete all saved records and medicine suggestions from this device?')){ls('rx_records',[]);ls('rx_meds',[]);fillList();showRecs()}};
-window.addEventListener('resize',fit);window.addEventListener('beforeprint',function(){update()});
+window.addEventListener('resize',fit);var T0=document.title;window.addEventListener('beforeprint',function(){update();document.title=fname(getData(),'pdf').slice(0,-4)});window.addEventListener('afterprint',function(){document.title=T0});
 if(document.fonts&&document.fonts.ready)document.fonts.ready.then(fit);
 
 /* ---------- settings: letterhead mode, reg no, signature ---------- */
@@ -276,30 +315,77 @@ $('reg').oninput=function(){OPTS.reg=this.value.trim();saveOpts();applyOpts()};
 $('sigf').onchange=function(){var f=this.files[0];if(!f)return;var fr=new FileReader();fr.onload=function(){var im=new Image();im.onload=function(){var k=Math.min(1,360/im.width,120/im.height),c=document.createElement('canvas');c.width=Math.round(im.width*k);c.height=Math.round(im.height*k);c.getContext('2d').drawImage(im,0,0,c.width,c.height);OPTS.sig=c.toDataURL('image/png');saveOpts();applyOpts()};im.src=fr.result};fr.readAsDataURL(f)};
 $('sigrm').onclick=function(){delete OPTS.sig;saveOpts();$('sigf').value='';applyOpts()};
 
+/* ---------- BP: easy input + abnormal colour ---------- */
+function bpFmt(raw){
+  var m=raw.match(/^\s*(\d{1,3})\D+(\d*)/);
+  if(m)return m[1]+'/'+m[2].slice(0,3);
+  var d=raw.replace(/\D/g,'');if(!d)return'';
+  var sl=(d.charAt(0)==='1'||d.charAt(0)==='2')?3:2,sy=d.slice(0,sl),di=d.slice(sl,sl+3);
+  return di?sy+'/'+di:sy}
+$('bp').addEventListener('input',function(){var f=bpFmt(this.value);if(f!==this.value)this.value=f});
+function bpCheck(){
+  var b=$('bp'),m=b.value.match(/^(\d{2,3})\/(\d{2,3})$/),bad=false;
+  if(m){var s=+m[1],d=+m[2];bad=s>=140||d>=90||s<90||d<60||s<=d}
+  b.classList.toggle('bad',bad);var l=b.parentNode.querySelector('label');l.classList.toggle('bad',bad);l.textContent=bad?'BP ⚠':'BP';
+  b.title=bad?'Outside the usual range (visual cue only)':'Type 12080 or 120 80 → 120/80'}
+
+/* ---------- age shortcut: 45 -> 45 y ---------- */
+$('pa').addEventListener('blur',function(){
+  var m=this.value.trim().match(/^(\d+(?:\.\d+)?)\s*([ymdYMD])?$/);
+  if(m){var v=m[1]+' '+(m[2]||'y').toLowerCase();if(v!==this.value){this.value=v;update()}}});
+
+/* ---------- Enter = next field ---------- */
+document.addEventListener('keydown',function(e){
+  if(e.key!=='Enter'||e.isComposing||e.shiftKey||e.altKey)return;
+  var t=e.target;if(!t.closest||!t.closest('.panel')||t.closest('details.set'))return;
+  var tag=t.tagName;if(tag==='BUTTON')return;
+  if(tag==='TEXTAREA'&&!(e.ctrlKey||e.metaKey))return;      /* plain Enter = new line in textareas; Ctrl+Enter = next */
+  if(tag==='INPUT'&&/^(checkbox|file|password|button)$/.test(t.type))return;
+  e.preventDefault();
+  var med=t.closest('.med'),meds=$('meds'),isLast=med&&med===meds.lastElementChild;
+  if(isLast&&t.classList.contains('mx')&&med.querySelector('.mn').value.trim()){addMed();update();meds.lastChild.querySelector('.mn').focus();return}   /* Enter on last note -> new medicine */
+  if(isLast&&t.classList.contains('mn')&&!t.value.trim()&&meds.children.length>1){med.remove();update();$('adv').focus();return}                      /* Enter on empty new medicine -> done, go to Advice */
+  var list=Array.prototype.filter.call(document.querySelector('.panel').querySelectorAll('input,select,textarea'),function(x){return x.offsetParent!==null&&!x.readOnly&&!x.disabled&&!x.closest('details.set')&&!/^(checkbox|file|password|hidden)$/.test(x.type)});
+  var nx=list[list.indexOf(t)+1];
+  if(nx){nx.focus();if(nx.tagName==='INPUT'&&/^(text|tel|)$/.test(nx.type)&&nx.select)nx.select()}});
+
 /* ---------- quick chips ---------- */
 function chips(box,list,target,sep){list.forEach(function(t){var b=el('button','chip',t);b.type='button';b.onclick=function(){var v=$(target).value.trim(),a=v?v.split(sep==='\n'?/\n/:/,\s*/):[];if(a.indexOf(t)<0)a.push(t);$(target).value=a.join(sep==='\n'?'\n':', ');update()};$(box).appendChild(b)})}
 chips('chInv',['CBC','RBS','HbA1c','Lipid profile','S. creatinine','ECG','Echo','MRI brain','CT scan brain','EEG','NCS/EMG','X-ray C/S'],'inv',', ');
 chips('chAdv',['পর্যাপ্ত বিশ্রাম নিন','প্রচুর পানি পান করুন','মানসিক চাপ এড়িয়ে চলুন','নিয়মিত ব্যায়াম করুন','লবণ কম খান','তৈলাক্ত খাবার এড়িয়ে চলুন','নিয়মিত ওষুধ সেবন করুন','সমস্যা বাড়লে জরুরি যোগাযোগ করুন'],'adv','\n');
 
-/* ---------- templates ---------- */
-function tpls(){return ls('rx_tpls')||[]}
-function fillTpl(){var s=$('tpl'),a=tpls();s.innerHTML='';var o=el('option','',a.length?'— choose template —':'No templates yet');o.value='';s.appendChild(o);a.forEach(function(t,i){var q=el('option','',t.name);q.value=i;s.appendChild(q)})}
-$('tplsave').onclick=function(){var n=prompt('Template name (e.g. Migraine, Diabetes follow-up)');if(!n||!n.trim())return;var d=getData(),a=tpls();a.push({name:n.trim(),data:{dx:d.dx,inv:d.inv,adv:d.adv,fu:d.fu,meds:d.meds}});ls('rx_tpls',a);fillTpl();$('tpl').value=a.length-1};
-$('tplload').onclick=function(){var i=$('tpl').value;if(i==='')return;var t=tpls()[i].data,c=getData();['dx','inv','adv','fu'].forEach(function(k){c[k]=t[k]||''});c.meds=t.meds&&t.meds.length?t.meds:[{}];setData(c)};
-$('tpldel').onclick=function(){var i=$('tpl').value;if(i===''||!confirm('Delete this template?'))return;var a=tpls();a.splice(i,1);ls('rx_tpls',a);fillTpl()};
+/* ---------- follow-up chips: time chips replace, extra chips add ---------- */
+var FUT=[['3 days / ৩ দিন','after 3 days / ৩ দিন পর'],['5 days / ৫ দিন','after 5 days / ৫ দিন পর'],['7 days / ৭ দিন','after 7 days / ৭ দিন পর'],['14 days / ১৪ দিন','after 14 days / ১৪ দিন পর'],['1 month / ১ মাস','after 1 month / ১ মাস পর'],['3 months / ৩ মাস','after 3 months / ৩ মাস পর']];
+var FUX=[['With reports / রিপোর্টসহ','with reports / রিপোর্টসহ'],['If problem increases / সমস্যা বাড়লে','if problem increases / সমস্যা বাড়লে']];
+function addDate(pd,n,u){var p=(pd||today()).split('-'),y=+p[0],m=+p[1]-1,d=+p[2],dt;
+  if(u==='month'){var t=new Date(y,m+n,1),last=new Date(t.getFullYear(),t.getMonth()+1,0).getDate();dt=new Date(t.getFullYear(),t.getMonth(),Math.min(d,last))}
+  else dt=new Date(y,m,d+(u==='week'?7*n:n));
+  return('0'+dt.getDate()).slice(-2)+'/'+('0'+(dt.getMonth()+1)).slice(-2)+'/'+dt.getFullYear()}
+/* 'after 7 days / ...' -> date counted from the prescription date; anything else stays as typed */
+function fuOut(o){var v=(o.fu||'').trim();if(!v)return'';
+  return v.split(/,\s*/).map(function(p){var m=p.match(/^after\s+(\d+)\s*(day|week|month)s?\b/i);return m?addDate(o.pd,+m[1],m[2].toLowerCase()):p}).join(', ')}
+function fuParts(){var v=$('fu').value.trim();return v?v.split(/,\s*/):[]}
+function fuSync(){var a=fuParts(),b=$('chFu'),h=$('fuHint'),o={fu:$('fu').value,pd:$('pd').value},out=fuOut(o);if(h)h.textContent=out&&out!==o.fu.trim()?'Prints as: '+out:'';if(!b)return;Array.prototype.forEach.call(b.children,function(c){c.classList.toggle('on',a.indexOf(c.dataset.v)>=0)})}
+function fuSet(a){$('fu').value=a.join(', ');update()}
+FUT.forEach(function(t){var b=el('button','chip',t[0]);b.type='button';b.dataset.v=t[1];b.onclick=function(){
+  var a=fuParts(),on=a.indexOf(t[1])>=0,times=FUT.map(function(x){return x[1]});
+  a=a.filter(function(p){return times.indexOf(p)<0});if(!on)a.unshift(t[1]);fuSet(a)};$('chFu').appendChild(b)});
+FUX.forEach(function(t){var b=el('button','chip',t[0]);b.type='button';b.dataset.v=t[1];b.onclick=function(){
+  var a=fuParts(),i=a.indexOf(t[1]);if(i<0)a.push(t[1]);else a.splice(i,1);fuSet(a)};$('chFu').appendChild(b)});
 
-/* ---------- returning patient autofill ---------- */
-function fillPt(){var dl=$('dl-pt'),seen={};dl.innerHTML='';recs().forEach(function(r){var n=r.data.pn;if(n&&!seen[n]){seen[n]=1;var o=document.createElement('option');o.value=n;dl.appendChild(o)}})}
-$('pn').addEventListener('change',function(){var n=this.value.trim().toLowerCase(),r=recs().filter(function(x){return(x.data.pn||'').trim().toLowerCase()===n})[0];if(!r)return;['pa','ps','pw','pp','pid'].forEach(function(k){if(!$(k).value)$(k).value=r.data[k]||''});update()});
+/* ---------- WhatsApp number chip: same as phone ---------- */
+function waSync(){var b=$('chWa');if(!b||!b.firstChild)return;var p=$('pp').value.trim();b.firstChild.classList.toggle('on',!!p&&$('pwa').value.trim()===p)}
+(function(){var b=el('button','chip','Same as phone / ফোনের নম্বরই');b.type='button';
+  b.onclick=function(){var p=$('pp').value.trim(),on=!!p&&$('pwa').value.trim()===p;$('pwa').value=on?'':p;update()};$('chWa').appendChild(b)})();
 
 /* ---------- WhatsApp / copy ---------- */
 function summary(o){var L=['ডাঃ মোঃ আল আমিন (Dr. Md. Al Amin)','Neuromedicine & Stroke Specialist, Khulna',''],n=0;
   L.push('Patient: '+o.pn+(o.pa?', '+o.pa:'')+(o.ps?', '+o.ps:''));L.push('Date: '+fdate(o.pd));if(o.dx)L.push('Diagnosis: '+o.dx);L.push('','Rx');
-  o.meds.forEach(function(m){if(!m.n)return;n++;L.push(n+'. '+m.n);var s=[m.d,m.t,m.u].filter(Boolean).join(' · ');if(s)L.push('   '+s);if(m.x)L.push('   '+m.x)});
-  if(o.inv)L.push('','Tests: '+o.inv);if(o.adv)L.push('','Advice:',o.adv);if(o.fu)L.push('','Follow-up: '+o.fu);
+  o.meds.forEach(function(m){if(!m.n)return;n++;L.push(n+'. '+mname(m));var s=[m.d,m.t,m.u].filter(Boolean).join(' · ');if(s)L.push('   '+s);if(m.x)L.push('   '+m.x)});
+  if(o.inv)L.push('','Tests: '+o.inv);if(o.adv)L.push('','Advice:',o.adv);if(fuOut(o))L.push('','Follow-up: '+fuOut(o));
   L.push('','Chamber: A Samad Memorial Hospital, Khulna · 01935-128454');return L.join('\n')}
 function flash(id,a,b){var x=$(id);x.textContent=a;setTimeout(function(){x.textContent=b},1400)}
-$('wabtn').onclick=function(){var o=getData(),p=(o.pp||'').replace(/\D/g,'');if(p.length===11&&p.charAt(0)==='0')p='88'+p;window.open('https://wa.me/'+p+'?text='+encodeURIComponent(summary(o)),'_blank')};
+$('wabtn').onclick=function(){var o=getData(),p=(o.pwa||o.pp||'').replace(/\D/g,'');if(p.length===11&&p.charAt(0)==='0')p='88'+p;window.open('https://wa.me/'+p+'?text='+encodeURIComponent(summary(o)),'_blank')};
 $('cpbtn').onclick=function(){var t=summary(getData());if(navigator.clipboard&&navigator.clipboard.writeText)navigator.clipboard.writeText(t).then(function(){flash('cpbtn','Copied ✓','Copy text')});else{var a=document.createElement('textarea');a.value=t;document.body.appendChild(a);a.select();document.execCommand('copy');a.remove();flash('cpbtn','Copied ✓','Copy text')}};
 
 /* ---------- send as image / PDF (WhatsApp share) ---------- */
@@ -323,12 +409,12 @@ function paint(o,H,sig){
  var oe=vit.join('\n')+(vit.length&&o.oe?'\n':'')+(o.oe||'');
  [['C/C',o.cc],['O/E',oe],['DIAGNOSIS',o.dx],['INVESTIGATIONS',o.inv]].forEach(function(s){T(c,s[0],P,ly,'700 12px '+FS,'#123f8c');ly+=17;c.font='400 12.5px '+FS;var L=wrapT(c,s[1],LW-14);if(!L.length)L=[''];L.forEach(function(l){T(c,l,P,ly,'400 12.5px '+FS,'#111');ly+=17});ly+=14});
  var ry=by+36,n=0;T(c,'Rx',rx,ry,'italic 700 30px Georgia,serif','#123f8c');ry+=30;
- o.meds.forEach(function(m){if(!m.n)return;n++;c.font='700 14.5px '+FS;var nl=wrapT(c,m.n,RW-24);T(c,n+'.',rx,ry,'400 14.5px '+FS,'#111');nl.forEach(function(l){T(c,l,rx+24,ry,'700 14.5px '+FS,'#111');ry+=19});
+ o.meds.forEach(function(m){if(!m.n)return;n++;c.font='700 14.5px '+FS;var nl=wrapT(c,mname(m),RW-24);T(c,n+'.',rx,ry,'400 14.5px '+FS,'#111');nl.forEach(function(l){T(c,l,rx+24,ry,'700 14.5px '+FS,'#111');ry+=19});
   var d=[m.d,m.t,m.u].filter(Boolean).join('  ·  ');if(d){T(c,d,rx+24,ry,'400 12.5px '+FS,'#333');ry+=17}
   if(m.x){c.font='italic 400 12px '+FS;wrapT(c,m.x,RW-24).forEach(function(l){T(c,l,rx+24,ry,'italic 400 12px '+FS,'#555');ry+=16})}ry+=10});
  ry+=8;T(c,'ADVICE',rx,ry,'700 12px '+FS,'#123f8c');ry+=19;c.font='400 13.5px '+FS;wrapT(c,o.adv,RW).forEach(function(l){T(c,l,rx,ry,'400 13.5px '+FS,'#111');ry+=19});
  var fl=H-84;c.fillStyle='#999';c.fillRect(P+LW,by,1,fl-by);c.fillRect(P,fl,W-2*P,1);
- T(c,'Follow-up:',rx,fl-14,'700 13.5px '+FS,'#111');var fw=c.measureText('Follow-up:').width;T(c,o.fu||'',rx+fw+6,fl-14,'400 13.5px '+FS,'#111');
+ T(c,'Follow-up:',rx,fl-14,'700 13.5px '+FS,'#111');var fw=c.measureText('Follow-up:').width;T(c,fuOut(o),rx+fw+6,fl-14,'400 13.5px '+FS,'#111');
  T(c,'A Samad Memorial Hospital, Royal Crossroads, 302 Khanjahan Ali Road, Khulna',P,fl+24,'400 11.5px '+FS,'#333');T(c,'Time: 2:30 PM – 5:00 PM (Closed Friday) · Appointment: 01935-128454',P,fl+40,'400 11.5px '+FS,'#333');
  var sx=W-P-210;c.fillStyle='#333';c.fillRect(sx,fl+52,210,1);T(c,"Doctor's signature",sx+105,fl+68,'400 12px '+FS,'#111','center');
  if(sig){var k=Math.min(200/sig.width,50/sig.height);c.drawImage(sig,sx+105-sig.width*k/2,fl+52-sig.height*k+2,sig.width*k,sig.height*k)}
@@ -349,9 +435,10 @@ function makePdf(cv){
  var x=len;add('xref\n0 6\n0000000000 65535 f \n');for(var n=1;n<=5;n++)add(('0000000000'+off[n]).slice(-10)+' 00000 n \n');
  add('trailer\n<</Size 6/Root 1 0 R>>\nstartxref\n'+x+'\n%%EOF');return new Blob(parts,{type:'application/pdf'})}
 function note(m){var n=$('shnote');n.hidden=false;n.textContent=m}
-function fname(o,ext){return 'Prescription-'+((o.pn||'patient').replace(/[^\w\u0980-\u09FF]+/g,'-'))+'-'+(o.pd||today())+'.'+ext}
+function fname(o,ext){var cl=function(s){return String(s||'').trim().replace(/[^\w\u0980-\u09FF]+/g,'-').replace(/^-+|-+$/g,'')};
+ return [fdate(o.pd||today()).replace(/\//g,'-'),cl(o.pid),cl(o.pn)||'patient'].filter(Boolean).join('-')+'.'+ext}
 function download(f){var a=document.createElement('a');a.href=URL.createObjectURL(f);a.download=f.name;document.body.appendChild(a);a.click();setTimeout(function(){URL.revokeObjectURL(a.href);a.remove()},2000)}
-function waChat(o,msg){var p=(o.pp||'').replace(/\D/g,'');if(p.length===11&&p.charAt(0)==='0')p='88'+p;window.open('https://wa.me/'+p+'?text='+encodeURIComponent(msg),'_blank')}
+function waChat(o,msg){var p=(o.pwa||o.pp||'').replace(/\D/g,'');if(p.length===11&&p.charAt(0)==='0')p='88'+p;window.open('https://wa.me/'+p+'?text='+encodeURIComponent(msg),'_blank')}
 async function shareDoc(kind,id){
  var btn=$(id),label=btn.dataset.l||btn.textContent,f=cache[kind],o=getData();btn.dataset.l=label;
  try{
@@ -375,7 +462,22 @@ $('shimg').onclick=function(){shareDoc('png','shimg')};$('shpdf').onclick=functi
 var tb=$('tabs');document.body.classList.add('v-edit');
 tb.addEventListener('click',function(e){var v=e.target.dataset&&e.target.dataset.v;if(!v)return;document.body.classList.remove('v-edit','v-prev');document.body.classList.add('v-'+v);Array.prototype.forEach.call(tb.children,function(b){b.classList.toggle('on',b.dataset.v===v)});window.scrollTo(0,0);fit()});
 
-fillList();showRecs();fillTpl();applyOpts();setData(ls('rx_draft')||{});
+/* ---------- draggable divider between the form and the preview (PC) ---------- */
+var app=document.querySelector('.app'),sp=$('split');
+function pwDef(){return app.clientWidth<1250?430:520}
+function pwClamp(w){return Math.max(330,Math.min(Math.max(330,app.clientWidth-36-340),w))}
+function pwApply(w,save){w=pwClamp(w);app.style.setProperty('--pw',w+'px');if(save)ls('rx_pw',w);fit()}
+function pwInit(){var w=ls('rx_pw');pwApply(typeof w==='number'?w:pwDef(),false)}
+sp.addEventListener('pointerdown',function(e){e.preventDefault();var left=document.querySelector('.panel').getBoundingClientRect().left;
+  sp.setPointerCapture(e.pointerId);document.body.classList.add('dragging');sp.classList.add('drag');
+  function mv(ev){pwApply(ev.clientX-left-11,false)}
+  function up(){sp.removeEventListener('pointermove',mv);sp.removeEventListener('pointerup',up);sp.removeEventListener('pointercancel',up);
+    document.body.classList.remove('dragging');sp.classList.remove('drag');pwApply(parseFloat(app.style.getPropertyValue('--pw')),true)}
+  sp.addEventListener('pointermove',mv);sp.addEventListener('pointerup',up);sp.addEventListener('pointercancel',up)});
+sp.addEventListener('dblclick',function(){ls('rx_pw',null);pwApply(pwDef(),false)});
+window.addEventListener('resize',pwInit);
+
+fillList();applyOpts();pwInit();setData(ls('rx_draft')||{});
 })();
 </script>
 <script>
@@ -427,5 +529,6 @@ $('cpsave').onclick=function(){var m=$('cpmsg'),c=cred(),o=$('cp0').value,a=$('c
 if(sessOk())enter();else $('lu').focus();
 })();
 </script>
+<script>document.getElementById('theme').addEventListener('click',function(){var t=document.documentElement.dataset.theme==='dark'?'light':'dark';document.documentElement.dataset.theme=t;try{localStorage.setItem('theme',t)}catch(e){}});</script>
 </body>
 </html>
